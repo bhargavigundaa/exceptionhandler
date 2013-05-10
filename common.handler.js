@@ -101,39 +101,3 @@ NS.Handler = (function() {// function to catch all exceptions  and track events
 
 	return api;
 })();
-
-NS.AnalyticsWrapper = {
-	trackEventWrapper : function(elem, eventType)
-	{
-		var trackingattr = elem.getAttribute("track_attr");
-		if (trackingattr) {
-			var attrs = trackingattr.split(";");
-			var typeAttrs = new Array();
-			if (attrs.length > 0) {
-				for ( var i = 0; i < attrs.length; i++) {
-					typeAttrs.push(attrs[i].split(":")[0].toLowerCase());
-				}
-
-				var index = typeAttrs.indexOf(eventType.toLowerCase(), 0);
-				if (index >= 0) {
-					var category = attrs[index].split(":")[1];
-					var action = attrs[index].split(":")[2];
-					var label = attrs[index].split(":")[3];
-				}
-				if (category !== undefined && action !== undefined && label !== undefined) {
-					this.trackEvent(category, action, label);
-				}
-			}
-		}
-	},
-
-	trackEvent : function(category, action, label)
-	{
-	}
-};
-
-NS.LoggingWrapper = {
-	log : function(msg, error)
-	{
-	}
-};
