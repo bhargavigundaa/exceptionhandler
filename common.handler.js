@@ -1,4 +1,4 @@
-NS.Handler = (function() {// function to catch all exceptions  and track events 
+ExceptionHandler = (function() {// function to catch all exceptions  and track events 
 	var logHandlerArr = new Array();
 	var analyticsHandlerArr = new Array();
 
